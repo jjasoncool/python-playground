@@ -5,7 +5,7 @@ import requests
 import os
 
 # 資料庫連線
-savePath = "./images"
+savePath = os.path.dirname(os.path.realpath(__file__)) + "/images"
 db = MySQLdb.connect(host="192.168.55.200", user="jason",
                     passwd="123456", db="dcs", charset='utf8')
 # 使用 cursor 物件

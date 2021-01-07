@@ -1,3 +1,4 @@
+import os
 import requests
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup as BS
@@ -8,7 +9,7 @@ getAddress = (
     'https://dosw.gov.taipei/News.aspx?n=80C7D4753D325D9A&sms=842A26926D5B58DF&page=1&PageSize=200',
     'https://sab.tycg.gov.tw/home.jsp?id=30522&parentpath=0,30480&page=1&pagesize=29',
     'https://www.society.taichung.gov.tw/13710/13714/13717',
-    'http://social.tainan.gov.tw/social/newslist.asp?nsub=__A000',
+    'https://sab.tainan.gov.tw/News.aspx?n=21727&sms=19697',
     'https://socbu.kcg.gov.tw/index.php?html=news_show.php'
 )
 
@@ -70,7 +71,7 @@ for index,mainLink in enumerate(getAddress):
 
     elif index == 3:
         nextUrl = ''
-        nextVal = '下一頁'
+        nextVal = '網頁已更新'
         city = 'Tainan'
         while True:
             # 條件若已不是下一頁
@@ -119,6 +120,8 @@ for index,mainLink in enumerate(getAddress):
 
 
 print(writeFiles)
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 with open('socialData.txt', 'w', encoding='utf8') as newFile:
     for d in writeFiles:
